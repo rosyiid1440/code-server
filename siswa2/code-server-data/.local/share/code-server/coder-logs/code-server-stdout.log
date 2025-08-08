@@ -1,8 +1,8 @@
-[2025-08-08T16:09:05.309Z] info  code-server 4.102.3 6f3d0a7e5ae5f6623e1963e96adabc3287386006
-[2025-08-08T16:09:05.309Z] info  Using user-data-dir /config/data
-[2025-08-08T16:09:05.337Z] info  Using config file /config/.config/code-server/config.yaml
-[2025-08-08T16:09:05.337Z] info  HTTP server listening on http://0.0.0.0:8443/
-[2025-08-08T16:09:05.337Z] info    - Authentication is enabled
-[2025-08-08T16:09:05.337Z] info      - Using password from $PASSWORD
-[2025-08-08T16:09:05.337Z] info    - Not serving HTTPS
-[2025-08-08T16:09:05.337Z] info  Session server listening on /config/data/code-server-ipc.sock
+[2025-08-08T16:10:12.684Z] info  code-server 4.102.3 6f3d0a7e5ae5f6623e1963e96adabc3287386006
+[2025-08-08T16:10:12.684Z] info  Using user-data-dir /config/data
+[2025-08-08T16:10:12.700Z] info  Using config file /config/.config/code-server/config.yaml
+[2025-08-08T16:10:12.700Z] info  HTTP server listening on http://0.0.0.0:8443/
+[2025-08-08T16:10:12.700Z] info    - Authentication is enabled
+[2025-08-08T16:10:12.700Z] info      - Using password from $PASSWORD
+[2025-08-08T16:10:12.700Z] info    - Not serving HTTPS
+[2025-08-08T16:10:12.700Z] info  Session server listening on /config/data/code-server-ipc.sock
