@@ -1,33 +1,107 @@
 version: "3.8"
 
 services:
-  code-server:
+  # Siswa 1
+  code-server-siswa1:
     image: lscr.io/linuxserver/code-server
     container_name: code-server-siswa1
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Jakarta
-      - PASSWORD=siswa1pass
+      - PASSWORD=mutbah # Ganti dengan password yang aman
     volumes:
-      - ./code-server-data:/config
-      - ./project:/config/workspace
+      - ./siswa1/code-server-data:/config
+      - ./siswa1/project:/config/workspace
     ports:
-      - "8081:8443" # akses editor: https://yourdomain.com:8081
+      - "8081:8443"
+    restart: unless-stopped
 
-  php-fpm:
+  php-fpm-siswa1:
     image: php:8.2-fpm
     container_name: php-fpm-siswa1
     volumes:
-      - ./project:/var/www/html
+      - ./siswa1/project:/var/www/html
+    restart: unless-stopped
 
-  nginx:
+  nginx-siswa1:
     image: nginx:latest
     container_name: nginx-siswa1
     depends_on:
-      - php-fpm
+      - php-fpm-siswa1
     volumes:
-      - ./project:/var/www/html
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./siswa1/project:/var/www/html
+      - ./nginx/siswa1.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - "8082:80" # akses subdomain siswa: http://siswa1.domain.com
+      - "8082:80"
+    restart: unless-stopped
+
+  # Siswa 2
+  code-server-siswa2:
+    image: lscr.io/linuxserver/code-server
+    container_name: code-server-siswa2
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+      - PASSWORD=sheryl # Ganti dengan password yang aman
+    volumes:
+      - ./siswa2/code-server-data:/config
+      - ./siswa2/project:/config/workspace
+    ports:
+      - "8083:8443"
+    restart: unless-stopped
+
+  php-fpm-siswa2:
+    image: php:8.2-fpm
+    container_name: php-fpm-siswa2
+    volumes:
+      - ./siswa2/project:/var/www/html
+    restart: unless-stopped
+
+  nginx-siswa2:
+    image: nginx:latest
+    container_name: nginx-siswa2
+    depends_on:
+      - php-fpm-siswa2
+    volumes:
+      - ./siswa2/project:/var/www/html
+      - ./nginx/siswa2.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8084:80"
+    restart: unless-stopped
+
+  # Siswa 3
+  code-server-siswa3:
+    image: lscr.io/linuxserver/code-server
+    container_name: code-server-siswa3
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+      - PASSWORD=beryl # Ganti dengan password yang aman
+    volumes:
+      - ./siswa3/code-server-data:/config
+      - ./siswa3/project:/config/workspace
+    ports:
+      - "8085:8443"
+    restart: unless-stopped
+
+  php-fpm-siswa3:
+    image: php:8.2-fpm
+    container_name: php-fpm-siswa3
+    volumes:
+      - ./siswa3/project:/var/www/html
+    restart: unless-stopped
+
+  nginx-siswa3:
+    image: nginx:latest
+    container_name: nginx-siswa3
+    depends_on:
+      - php-fpm-siswa3
+    volumes:
+      - ./siswa3/project:/var/www/html
+      - ./nginx/siswa3.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8086:80"
+    restart: unless-stopped
