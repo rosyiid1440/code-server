@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+
+# Perintah ini menjalankan code-server dan secara eksplisit
+# memberitahunya untuk mengunci dirinya di dalam direktori /workspace.
+# Argumen /workspace di akhir adalah kunci utamanya.
+exec /app/code-server/bin/code-server \
+  --config /config/config.yaml \
+  --host 0.0.0.0 \
+  --auth password \
+  /workspace

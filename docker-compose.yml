@@ -3,7 +3,9 @@ version: "3.8"
 services:
   # Siswa 1
   code-server-siswa1:
-    image: lscr.io/linuxserver/code-server
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: code-server-siswa1
     working_dir: /workspace
     environment:
@@ -41,7 +43,9 @@ services:
 
   # Siswa 2
   code-server-siswa2:
-    image: lscr.io/linuxserver/code-server
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: code-server-siswa2
     working_dir: /workspace
     environment:
@@ -79,7 +83,9 @@ services:
 
   # Siswa 3
   code-server-siswa3:
-    image: lscr.io/linuxserver/code-server
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: code-server-siswa3
     working_dir: /workspace
     environment:
@@ -117,7 +123,9 @@ services:
 
     # Siswa 4
   code-server-siswa4:
-    image: lscr.io/linuxserver/code-server
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: code-server-siswa4
     working_dir: /workspace
     environment:
