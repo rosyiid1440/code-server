@@ -10,9 +10,10 @@ services:
       - PGID=1000
       - TZ=Asia/Jakarta
       - PASSWORD=mutbah # Ganti dengan password yang aman
+      - DEFAULT_WORKSPACE=/workspace
     volumes:
       - ./siswa1/code-server-data:/config
-      - ./siswa1/project:/config/workspace
+      - ./siswa1/project:/workspace
     ports:
       - "8081:8443"
     restart: unless-stopped
@@ -45,9 +46,10 @@ services:
       - PGID=1000
       - TZ=Asia/Jakarta
       - PASSWORD=sheryl # Ganti dengan password yang aman
+      - DEFAULT_WORKSPACE=/workspace
     volumes:
       - ./siswa2/code-server-data:/config
-      - ./siswa2/project:/config/workspace
+      - ./siswa2/project:/workspace
     ports:
       - "8083:8443"
     restart: unless-stopped
@@ -80,9 +82,10 @@ services:
       - PGID=1000
       - TZ=Asia/Jakarta
       - PASSWORD=beryl # Ganti dengan password yang aman
+      - DEFAULT_WORKSPACE=/workspace
     volumes:
       - ./siswa3/code-server-data:/config
-      - ./siswa3/project:/config/workspace
+      - ./siswa3/project:/workspace
     ports:
       - "8085:8443"
     restart: unless-stopped
@@ -104,4 +107,40 @@ services:
       - ./nginx/siswa3.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "8086:80"
+    restart: unless-stopped
+
+    # Siswa 4
+  code-server-siswa4:
+    image: lscr.io/linuxserver/code-server
+    container_name: code-server-siswa4
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+      - PASSWORD=aditya # Ganti dengan password yang aman
+      - DEFAULT_WORKSPACE=/workspace
+    volumes:
+      - ./siswa4/code-server-data:/config
+      - ./siswa4/project:/workspace
+    ports:
+      - "8087:8443"
+    restart: unless-stopped
+
+  php-fpm-siswa4:
+    image: php:8.2-fpm
+    container_name: php-fpm-siswa4
+    volumes:
+      - ./siswa4/project:/var/www/html
+    restart: unless-stopped
+
+  nginx-siswa4:
+    image: nginx:latest
+    container_name: nginx-siswa4
+    depends_on:
+      - php-fpm-siswa4
+    volumes:
+      - ./siswa4/project:/var/www/html
+      - ./nginx/siswa4.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8088:80"
     restart: unless-stopped
