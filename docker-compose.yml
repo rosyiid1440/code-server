@@ -5,6 +5,7 @@ services:
   code-server-siswa1:
     image: lscr.io/linuxserver/code-server
     container_name: code-server-siswa1
+    working_dir: /workspace
     environment:
       - PUID=1000
       - PGID=1000
@@ -16,6 +17,7 @@ services:
       - ./siswa1/project:/workspace
     ports:
       - "8081:8443"
+    command: ["/usr/bin/dumb-init", "--", "code-server", "--host", "0.0.0.0", "."] # <-- Ubah ini
     restart: unless-stopped
 
   php-fpm-siswa1:
@@ -41,6 +43,7 @@ services:
   code-server-siswa2:
     image: lscr.io/linuxserver/code-server
     container_name: code-server-siswa2
+    working_dir: /workspace
     environment:
       - PUID=1000
       - PGID=1000
@@ -52,6 +55,7 @@ services:
       - ./siswa2/project:/workspace
     ports:
       - "8083:8443"
+    command: ["/usr/bin/dumb-init", "--", "code-server", "--host", "0.0.0.0", "."] # <-- Ubah ini
     restart: unless-stopped
 
   php-fpm-siswa2:
@@ -77,6 +81,7 @@ services:
   code-server-siswa3:
     image: lscr.io/linuxserver/code-server
     container_name: code-server-siswa3
+    working_dir: /workspace
     environment:
       - PUID=1000
       - PGID=1000
@@ -88,6 +93,7 @@ services:
       - ./siswa3/project:/workspace
     ports:
       - "8085:8443"
+    command: ["/usr/bin/dumb-init", "--", "code-server", "--host", "0.0.0.0", "."] # <-- Ubah ini
     restart: unless-stopped
 
   php-fpm-siswa3:
@@ -113,6 +119,7 @@ services:
   code-server-siswa4:
     image: lscr.io/linuxserver/code-server
     container_name: code-server-siswa4
+    working_dir: /workspace
     environment:
       - PUID=1000
       - PGID=1000
@@ -124,6 +131,7 @@ services:
       - ./siswa4/project:/workspace
     ports:
       - "8087:8443"
+    command: ["/usr/bin/dumb-init", "--", "code-server", "--host", "0.0.0.0", "."] # <-- Ubah ini
     restart: unless-stopped
 
   php-fpm-siswa4:
